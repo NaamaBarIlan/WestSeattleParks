@@ -32,10 +32,10 @@ namespace WestSeattleParks
 
             app.UseEndpoints(endpoints =>
             {
-                endpoints.MapGet("/", async context =>
-                {
-                    await context.Response.WriteAsync("Hello World!");
-                });
+                // Set our default routing for our request within the API application
+                // By default, our convention is {sit}/[controller]/[action]/[id]
+                // id is not required, allowing it to be null-able
+                endpoints.MapControllerRoute("default", "{controller=Home}/{action=Index}/{id?}");
             });
         }
     }
